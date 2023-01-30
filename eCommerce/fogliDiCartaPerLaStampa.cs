@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace eCommerce
 {
-    public class fogliDiCartaPerLaStampa:Cancelleria
+    public class FogliDiCartaPerLaStampa:Cancelleria
     {
         private float grammatura { get; set; }
     }

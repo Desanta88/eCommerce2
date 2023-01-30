@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace eCommerce
 {
-    public class penne:Cancelleria
+    public class Penne:Cancelleria
     {
         private string funzionamento { set; get; }
     }
