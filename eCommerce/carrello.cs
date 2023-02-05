@@ -23,23 +23,24 @@ namespace eCommerce
             get { return _id; }
             private set { _id = value; }
         }
-        public void Aggiungi(prodotto p)
+        public void Aggiungi(prodotto p,DateTime d)
         {
             if (i < 100 && p != null)
             {
                 p.Id = "p" + i;
                 Prodotti[i] = p;
                 i++;
+                p.gestisciSconti(d);    
             }
         }
         private int ricerca(string id)
         {
             int m = 0, pos = 0;
-            for (int i = 0; i < i; i++)
+            for (int x = 0; x < i; x++)
             {
-                if (id == Prodotti[i].Id)
+                if (id == Prodotti[x].Id)
                 {
-                    Prodotti[i] = null;
+                    return pos;
                 }
                 else
                 {
@@ -47,7 +48,7 @@ namespace eCommerce
                 }
                 pos = m;
             }
-            return pos;
+            return -1;
         }
         private void Ricompatta(int posi)
         {

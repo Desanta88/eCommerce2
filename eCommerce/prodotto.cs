@@ -14,11 +14,12 @@ namespace eCommerce
         private string _descrizione;
         private float _prezzo;
 
-        public prodotto(string iden, string pro, string name)
+        public prodotto(string pro, string name,string desc,int price)
         {
-            _id = iden;
             _produttore = pro;
             _nome = name;
+            _descrizione = desc;
+            _prezzo = price;
         }
         public prodotto(string pro, string name)
         {
@@ -28,6 +29,11 @@ namespace eCommerce
         public prodotto()
         {
 
+        }
+        public void gestisciSconti(DateTime d)
+        {
+            if (this is Elettronico)
+                scontoElettronico(d);
         }
         public string Id
         {
@@ -54,9 +60,18 @@ namespace eCommerce
             get { return _prezzo; }
             set { _prezzo = value; }
         }
-        public override string ToString()
+        public virtual string ToString()
         {
-            return Id + ";" + Nome;
+            return Id + ";" + Nome + ";"+Produttore + ";"+Prezzo + ";"+Descrizione;
+        }
+        private void scontoElettronico(DateTime d)
+        {
+            if (d.DayOfWeek == DayOfWeek.Monday)
+            {
+                float prezzoScontato = 0;
+                prezzoScontato = (this.Prezzo * 5) / 100;
+                this.Prezzo = this.Prezzo - prezzoScontato;
+            }
         }
     }
 }

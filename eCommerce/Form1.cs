@@ -3,22 +3,23 @@ namespace eCommerce
     public partial class Form1 : Form
     {
         public prodotto product1;
-        public prodotto product2;
+        public Elettronico product2;
         public prodotto product3;
         public prodotto[] prodottiPre = new prodotto[3];
         public prodotto[] Prodotti = new prodotto[100];
         public carrello car = new carrello("dfasij");
         public string prodottoSelect, sss;
         public int nP = 0, npC, index = 0;
-        public string[] intes = new string[] { "ID", "NOME" };
+        public string[] intes = new string[] { "ID", "NOME","PRODUTTORE","PREZZO","DESCRIZIONE" };
+        public DateTime date = new DateTime(2023, 2, 6);
         public Form1()
         {
             InitializeComponent();
             product1 = new prodotto("AIA", "cotoletta");
             prodottiPre[0] = product1;
-            product2 = new prodotto("logitech", "mouse wireless");
+            product2 = new Elettronico("logitech", "mouse wireless","un bel mouse",15,"weaeawdx");
             prodottiPre[1] = product2;
-            product3 = new prodotto("porcocane", "carne di maiale");
+            product3 = new prodotto("ya", "carne di maiale");
             prodottiPre[2] = product3;
             prodottoPredefiniti(prodottiPre);
             for (int i = 0; i < intes.Length; i++)
@@ -77,7 +78,10 @@ namespace eCommerce
                 for (int i = 0; i < prodottiPre.Length; i++)
                 {
                     if (prodottoSelect == prodottiPre[i].Nome)
-                        car.Aggiungi(prodottiPre[i]);
+                    {
+                        car.Aggiungi(prodottiPre[i],date);
+                    }
+                                 
                 }
                 nP++;
                 car.SetNProdotti(nP);

@@ -106,9 +106,9 @@
             // 
             // listViewCarrello
             // 
-            this.listViewCarrello.Location = new System.Drawing.Point(525, 25);
+            this.listViewCarrello.Location = new System.Drawing.Point(436, 25);
             this.listViewCarrello.Name = "listViewCarrello";
-            this.listViewCarrello.Size = new System.Drawing.Size(263, 404);
+            this.listViewCarrello.Size = new System.Drawing.Size(352, 404);
             this.listViewCarrello.TabIndex = 4;
             this.listViewCarrello.UseCompatibleStateImageBehavior = false;
             this.listViewCarrello.View = System.Windows.Forms.View.Details;

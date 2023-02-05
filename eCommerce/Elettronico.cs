@@ -9,6 +9,14 @@ namespace eCommerce
     public class Elettronico :prodotto
     {
         private string modello { get; set; }
-        private int sconto { get; set; }
+
+        public Elettronico(string pro, string name, string desc, int price,string model) : base(pro, name, desc, price)
+        {
+            this.modello = model;
+        }
+        public Elettronico()
+        {
+
+        }
     }
 }
