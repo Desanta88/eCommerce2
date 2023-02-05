@@ -23,14 +23,14 @@ namespace eCommerce
             get { return _id; }
             private set { _id = value; }
         }
-        public void Aggiungi(prodotto p,DateTime d)
+        public void Aggiungi(prodotto p,DateTime d,DateTime d2)
         {
             if (i < 100 && p != null)
             {
                 p.Id = "p" + i;
                 Prodotti[i] = p;
                 i++;
-                p.gestisciSconti(d);    
+                p.gestisciSconti(d,d2);    
             }
         }
         private int ricerca(string id)

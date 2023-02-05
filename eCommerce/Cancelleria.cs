@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace eCommerce
 {
-    public class Cancelleria:prodotto
+    public abstract class Cancelleria:prodotto
     {
-        private int sconto{set;get;}
-        public Cancelleria(string pro, string name, string desc, int price,int s) : base(pro, name, desc, price)
+        public Cancelleria(string pro, string name, string desc, int price) : base(pro, name, desc, price)
         {
-            this.sconto = s;
+            
         }
         public Cancelleria()
         {

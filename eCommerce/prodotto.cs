@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace eCommerce
+﻿namespace eCommerce
 {
-    public class prodotto //ricordati di fare abstract
+    public abstract class prodotto 
     {
         private string _id;
         private string _nome;
         private string _produttore;
         private string _descrizione;
         private float _prezzo;
+
+        private int counter { get; set; }
 
         public prodotto(string pro, string name,string desc,int price)
         {
@@ -30,10 +26,14 @@ namespace eCommerce
         {
 
         }
-        public void gestisciSconti(DateTime d)
+        public void gestisciSconti(DateTime d,DateTime d2)
         {
             if (this is Elettronico)
                 scontoElettronico(d);
+            if (this is Alimentare)
+                scontoAlimentare(d, d2);
+            if (this is Cancelleria)
+                scontoCancelleria(d);
         }
         public string Id
         {
@@ -66,12 +66,43 @@ namespace eCommerce
         }
         private void scontoElettronico(DateTime d)
         {
-            if (d.DayOfWeek == DayOfWeek.Monday)
+            float prezzoScontato = 0;
+            counter = 0;
+            if (d.DayOfWeek == DayOfWeek.Monday && counter==0 )
             {
-                float prezzoScontato = 0;
                 prezzoScontato = (this.Prezzo * 5) / 100;
-                this.Prezzo = this.Prezzo - prezzoScontato;
+                this.Prezzo = this.Prezzo-prezzoScontato;
+                counter++;
             }
+            else
+                this.Prezzo = this.Prezzo + prezzoScontato;
+        }
+        private void scontoAlimentare(DateTime d,DateTime d2)
+        {
+            counter = 0;
+            float prezzoScontato = 0;
+            var dif = d2.Subtract(d);
+            if (dif.Days<=7 && counter==0)
+            {
+                prezzoScontato = (this.Prezzo * 50) / 100;
+                this.Prezzo = this.Prezzo-prezzoScontato;
+                counter++;
+            }
+            else
+                this.Prezzo = this.Prezzo + prezzoScontato;
+        }
+        private void scontoCancelleria(DateTime d)
+        {
+            float prezzoScontato = 0;
+            counter = 0;
+            if (d.Day % 2 == 0)
+            {
+                prezzoScontato = (this.Prezzo * 3) / 100;
+                this.Prezzo = this.Prezzo - prezzoScontato;
+                counter++;
+            }
+            else
+                this.Prezzo = this.Prezzo + prezzoScontato;
         }
     }
 }

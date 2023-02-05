@@ -2,25 +2,30 @@ namespace eCommerce
 {
     public partial class Form1 : Form
     {
-        public prodotto product1;
+        public Alimentare product1;
         public Elettronico product2;
-        public prodotto product3;
-        public prodotto[] prodottiPre = new prodotto[3];
+        public Penne product3;
+        public FogliDiCartaPerLaStampa product4;
+        public prodotto[] prodottiPre = new prodotto[4];
         public prodotto[] Prodotti = new prodotto[100];
         public carrello car = new carrello("dfasij");
         public string prodottoSelect, sss;
         public int nP = 0, npC, index = 0;
         public string[] intes = new string[] { "ID", "NOME","PRODUTTORE","PREZZO","DESCRIZIONE" };
+        public string[] ingredienti = new string[] { "pollo" };
         public DateTime date = new DateTime(2023, 2, 6);
+        public DateTime scadenza = new DateTime(2023, 2, 14);
         public Form1()
         {
             InitializeComponent();
-            product1 = new prodotto("AIA", "cotoletta");
+            product1 = new Alimentare("AIA", "cotoletta","una buonissima coto",6,ingredienti,scadenza);
             prodottiPre[0] = product1;
             product2 = new Elettronico("logitech", "mouse wireless","un bel mouse",15,"weaeawdx");
             prodottiPre[1] = product2;
-            product3 = new prodotto("ya", "carne di maiale");
+            product3 = new Penne("bic", "penna blu","una penna",3,"scrivere");
             prodottiPre[2] = product3;
+            product4 = new FogliDiCartaPerLaStampa("yolo", "foglio bianco", "una foglio", 4, 7);
+            prodottiPre[3] = product4;
             prodottoPredefiniti(prodottiPre);
             for (int i = 0; i < intes.Length; i++)
             {
@@ -30,7 +35,7 @@ namespace eCommerce
 
         public void prodottoPredefiniti(prodotto[] p)
         {
-            for(int i = 0; i < 3; i++)
+            for(int i = 0; i < 4; i++)
             {
                 ListViewItem A = new ListViewItem(p[i].Nome);
                 listViewProdotti.Items.Add(A);
@@ -72,6 +77,7 @@ namespace eCommerce
         }
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            var diff = scadenza.Subtract(date);
             prodottoSelect = listViewProdotti.SelectedItems[0].Text;
             if (nP < 100)
             {
@@ -79,7 +85,8 @@ namespace eCommerce
                 {
                     if (prodottoSelect == prodottiPre[i].Nome)
                     {
-                        car.Aggiungi(prodottiPre[i],date);
+                        if(date!=scadenza || date<scadenza)
+                          car.Aggiungi(prodottiPre[i],date,scadenza);                          
                     }
                                  
                 }
@@ -90,8 +97,18 @@ namespace eCommerce
             {
                 if (prodottoSelect == prodottiPre[i].Nome)
                 {
-                    ListViewItem riga = new ListViewItem(prodottiPre[i].ToString().Split(';'));
-                    listViewCarrello.Items.Add(riga);
+                    if (date == scadenza || date > scadenza)
+                    {
+                        MessageBox.Show("il prodotto è scaduto,esso verrà eliminato");
+                        if (listViewProdotti.SelectedIndices.Count > 0)
+                            index = listViewProdotti.SelectedIndices[0];
+                        listViewProdotti.Items.RemoveAt(index);
+                    }
+                    else
+                    {
+                        ListViewItem riga = new ListViewItem(prodottiPre[i].ToString().Split(';'));
+                        listViewCarrello.Items.Add(riga);
+                    }    
                 }
 
             }
