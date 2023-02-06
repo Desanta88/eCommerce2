@@ -67,8 +67,7 @@ namespace eCommerce
 
         private void buttonAggiungi_Click(object sender, EventArgs e)
         {
-            CompilazioniProdotti Comp=new CompilazioniProdotti();
-            Comp.Show();
+            
         }
 
         private void SvuotaCarrello_Click(object sender, EventArgs e)

@@ -25,13 +25,14 @@ namespace eCommerce
         }
         public void Aggiungi(prodotto p,DateTime d,DateTime d2)
         {
+            PrezzoTotale = 0;
             if (i < 100 && p != null)
             {
                 p.Id = "p" + i;
                 Prodotti[i] = p;
                 i++;
                 PrezzoTotale=PrezzoTotale+p.getScontato();
-                p.Prezzo = p.getScontato();
+                //p.Prezzo = p.getScontato();
             }
         }
         private int ricerca(string id)

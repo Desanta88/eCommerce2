@@ -58,7 +58,7 @@
         }
         public virtual string ToString()
         {
-            return Id + ";" + Nome + ";"+Produttore + ";"+Prezzo + ";"+Descrizione;
+            return Id + ";" + Nome + ";"+Produttore + ";"+Prezzo +";"+getScontato().ToString()+ ";"+Descrizione;
         }
     }
 }
