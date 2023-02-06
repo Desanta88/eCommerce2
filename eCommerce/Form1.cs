@@ -65,6 +65,12 @@ namespace eCommerce
             car.SetNProdotti(nP);
         }
 
+        private void buttonAggiungi_Click(object sender, EventArgs e)
+        {
+            CompilazioniProdotti Comp=new CompilazioniProdotti();
+            Comp.Show();
+        }
+
         private void SvuotaCarrello_Click(object sender, EventArgs e)
         {
             listViewCarrello.Clear();
@@ -77,7 +83,6 @@ namespace eCommerce
         }
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            var diff = scadenza.Subtract(date);
             prodottoSelect = listViewProdotti.SelectedItems[0].Text;
             if (nP < 100)
             {
@@ -85,7 +90,6 @@ namespace eCommerce
                 {
                     if (prodottoSelect == prodottiPre[i].Nome)
                     {
-                        if(date!=scadenza || date<scadenza)
                           car.Aggiungi(prodottiPre[i],date,scadenza);                          
                     }
                                  

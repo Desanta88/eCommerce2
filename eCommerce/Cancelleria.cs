@@ -16,5 +16,17 @@ namespace eCommerce
         {
 
         }
+        override public  float getScontato()
+        {
+            float prezzoScontato = 0;
+            DateTime oggi = DateTime.Now;
+            if (oggi.Day % 2 == 0)
+            {
+                prezzoScontato = (this.Prezzo * 3) / 100;
+                prezzoScontato = this.Prezzo - prezzoScontato;
+                return prezzoScontato;
+            }
+            return base.getScontato();
+        }
     }
 }
