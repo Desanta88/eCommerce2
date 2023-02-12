@@ -39,7 +39,7 @@
         public string Produttore
         {
             get { return _produttore; }
-            private set { _produttore = value; }
+            set { _produttore = value; }
         }
         public string Nome
         {
@@ -59,6 +59,10 @@
         public virtual string ToString()
         {
             return Id + ";" + Nome + ";"+Produttore + ";"+Prezzo +";"+getScontato().ToString()+ ";"+Descrizione;
+        }
+        public virtual prodotto Clone(prodotto p)
+        {
+            return p;
         }
     }
 }

@@ -34,5 +34,21 @@ namespace eCommerce
             }
             return base.getScontato();
         }
+        override public string ToString()
+        {
+            return Id + ";" + Nome + ";" + Produttore + ";" + Prezzo + ";" + getScontato().ToString() + ";" + Descrizione+";"+dataScadenza.ToString();
+        }
+        override public prodotto Clone(prodotto p)
+        {
+            Alimentare a = new Alimentare();
+            a.Id = p.Id;
+            a.Prezzo = p.Prezzo;
+            a.Descrizione = p.Descrizione;
+            a.Nome = p.Nome;
+            a.Produttore = p.Produttore;
+            a.dataScadenza = this.dataScadenza;
+            a.ingredienti = this.ingredienti;
+            return a;
+        }
     }
 }

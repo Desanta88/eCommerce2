@@ -30,9 +30,20 @@ namespace eCommerce
             }
             return base.getScontato();
         }
-        public override string ToString()
+        override public string ToString()
         {
-            return base.ToString();
+            return Id + ";" + Nome + ";" + Produttore + ";" + Prezzo + ";" + getScontato().ToString() + ";" + Descrizione + ";" + modello;
+        }
+        override public prodotto Clone(prodotto p)
+        {
+            Elettronico a = new Elettronico();
+            a.Id = p.Id;
+            a.Prezzo = p.Prezzo;
+            a.Descrizione = p.Descrizione;
+            a.Nome = p.Nome;
+            a.Produttore = p.Produttore;
+            a.modello = this.modello;
+            return a;
         }
     }
 }

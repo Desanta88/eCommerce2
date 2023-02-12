@@ -38,7 +38,7 @@
             this.svuotaCarrelloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.listViewCarrello = new System.Windows.Forms.ListView();
-            this.buttonAggiungi = new System.Windows.Forms.Button();
+            this.labelPrezzoToT = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -107,22 +107,21 @@
             // 
             // listViewCarrello
             // 
-            this.listViewCarrello.Location = new System.Drawing.Point(436, 25);
+            this.listViewCarrello.Location = new System.Drawing.Point(308, 25);
             this.listViewCarrello.Name = "listViewCarrello";
-            this.listViewCarrello.Size = new System.Drawing.Size(352, 413);
+            this.listViewCarrello.Size = new System.Drawing.Size(480, 413);
             this.listViewCarrello.TabIndex = 4;
             this.listViewCarrello.UseCompatibleStateImageBehavior = false;
             this.listViewCarrello.View = System.Windows.Forms.View.Details;
             // 
-            // buttonAggiungi
+            // labelPrezzoToT
             // 
-            this.buttonAggiungi.Location = new System.Drawing.Point(297, 437);
-            this.buttonAggiungi.Name = "buttonAggiungi";
-            this.buttonAggiungi.Size = new System.Drawing.Size(133, 23);
-            this.buttonAggiungi.TabIndex = 5;
-            this.buttonAggiungi.Text = "Aggiungi prodotto";
-            this.buttonAggiungi.UseVisualStyleBackColor = true;
-            this.buttonAggiungi.Click += new System.EventHandler(this.buttonAggiungi_Click);
+            this.labelPrezzoToT.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelPrezzoToT.Location = new System.Drawing.Point(477, 450);
+            this.labelPrezzoToT.Name = "labelPrezzoToT";
+            this.labelPrezzoToT.Size = new System.Drawing.Size(186, 23);
+            this.labelPrezzoToT.TabIndex = 5;
+            this.labelPrezzoToT.Text = "label2";
             // 
             // Form1
             // 
@@ -130,7 +129,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 482);
             this.ContextMenuStrip = this.contextMenuStrip2;
-            this.Controls.Add(this.buttonAggiungi);
+            this.Controls.Add(this.labelPrezzoToT);
             this.Controls.Add(this.listViewCarrello);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listViewProdotti);
@@ -153,6 +152,6 @@
         private ToolStripMenuItem toolStripMenuItem2;
         private ListView listViewCarrello;
         private ToolStripMenuItem svuotaCarrelloToolStripMenuItem;
-        private Button buttonAggiungi;
+        private Label labelPrezzoToT;
     }
 }

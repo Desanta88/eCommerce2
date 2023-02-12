@@ -17,5 +17,20 @@ namespace eCommerce
         {
 
         }
+        override public string ToString()
+        {
+            return Id + ";" + Nome + ";" + Produttore + ";" + Prezzo + ";" + getScontato().ToString() + ";" + Descrizione + ";" + funzionamento;
+        }
+        override public prodotto Clone(prodotto p)
+        {
+            Penne a = new Penne();
+            a.Id = p.Id;
+            a.Prezzo = p.Prezzo;
+            a.Descrizione = p.Descrizione;
+            a.Nome = p.Nome;
+            a.Produttore = p.Produttore;
+            a.funzionamento = this.funzionamento;
+            return a;
+        }
     }
 }
